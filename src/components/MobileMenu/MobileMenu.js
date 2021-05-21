@@ -9,7 +9,7 @@ import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
 import VisuallyHidden from '../VisuallyHidden';
 
-const MobileMenu = ({ isOpen, onDismiss, handleDismiss }) => {
+const MobileMenu = ({ isOpen, onDismiss }) => {
   if (!isOpen) {
     return null;
   }
@@ -17,15 +17,14 @@ const MobileMenu = ({ isOpen, onDismiss, handleDismiss }) => {
   return (
     <Overlay
       isOpen={isOpen}
-      onDismiss={handleDismiss}
+      onDismiss={onDismiss}
     >
-      <Content>
-        <Header>
-          <UnstyledButton onClick={onDismiss}>
-            <Icon id="close" strokeWidth={2} />
-            <VisuallyHidden>Dismiss menu</VisuallyHidden>
-          </UnstyledButton>
-        </Header>
+      <Content aria-label="Menu">
+        <CloseButton onClick={onDismiss}>
+          <Icon id="close" strokeWidth={2} />
+          <VisuallyHidden>Dismiss menu</VisuallyHidden>
+        </CloseButton>
+        <Filler />
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -50,35 +49,37 @@ const Overlay = styled(DialogOverlay)`
   left: 0;
   right: 0;
   bottom: 0;
-  background: hsl(0deg 0% 0% / 0.5);
+  background: hsl(220deg 5% 40% / 0.8);
   display: flex;
   justify-content: flex-end;
 `;
 
 const Content = styled(DialogContent)`
   position: relative;
-  width: 75%;
+  width: 300px;
   height: 100%;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background: ${COLORS.white};
 `;
 
-const Header = styled.header`
+const CloseButton = styled(UnstyledButton)`
+  position: absolute;
+  top: 10px;
+  right: 0;
+  padding: 16px;
+`;
+
+const Filler = styled.div`
   flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  height: 72px;
-  padding: 26px 16px;
 `;
 
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
-  padding: 32px;
-  gap: 22px;
+  gap: 16px;
 `;
 
 const NavLink = styled.a`
@@ -98,8 +99,7 @@ const Footer = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 32px;
-  gap: 14px;
+  gap: 8px;
 `;
 
 const FooterLink = styled.a`
