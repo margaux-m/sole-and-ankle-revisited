@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 
-import { COLORS, QUERIES, WEIGHTS } from '../../constants';
+import { QUERIES } from '../../constants';
 
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
@@ -49,7 +49,7 @@ const Overlay = styled(DialogOverlay)`
   left: 0;
   right: 0;
   bottom: 0;
-  background: hsl(220deg 5% 40% / 0.8);
+  background: var(--color-backdrop);
   display: flex;
   justify-content: flex-end;
 `;
@@ -62,7 +62,7 @@ const Content = styled(DialogContent)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: ${COLORS.white};
+  background: var(--color-white);
 `;
 
 const CloseButton = styled(UnstyledButton)`
@@ -86,11 +86,11 @@ const NavLink = styled.a`
   font-size: ${18 / 16}rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: ${COLORS.gray[900]};
-  font-weight: ${WEIGHTS.medium};
+  color: var(--color-gray-900);
+  font-weight: var(--weight-medium);
 
   &:first-of-type {
-    color: ${COLORS.secondary};
+    color: var(--color-secondary);
   }
 `;
 
@@ -105,8 +105,8 @@ const Footer = styled.footer`
 const FooterLink = styled.a`
   font-size: ${14 / 16}rem;
   text-decoration: none;
-  color: ${COLORS.gray[700]};
-  font-weight: ${WEIGHTS.medium};
+  color: var(--color-gray-700);
+  font-weight: var(--weight-medium);
 `;
 
 export default MobileMenu;
